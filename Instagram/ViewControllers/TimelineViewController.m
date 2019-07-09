@@ -28,18 +28,11 @@
     }];
     
     AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
-    
+
     UIViewController* rootController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    
+
     UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:rootController];
     appDelegateTemp.window.rootViewController = navigation;
-    
-//    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-//
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[nil]];
-//    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-//    appDelegate.window.rootViewController = loginViewController;
-
 }
 
 /*
