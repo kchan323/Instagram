@@ -20,6 +20,10 @@
 		F9EA3A7722D40C0D00C8C884 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EA3A7622D40C0D00C8C884 /* LoginViewController.m */; };
 		F9EA3A7A22D40C6F00C8C884 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EA3A7922D40C6F00C8C884 /* SignupViewController.m */; };
 		F9EA3A7D22D40CDA00C8C884 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EA3A7C22D40CDA00C8C884 /* TimelineViewController.m */; };
+		F9EA3A8022D5245D00C8C884 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EA3A7F22D5245D00C8C884 /* CameraViewController.m */; };
+		F9EA3A8322D528E200C8C884 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EA3A8222D528E200C8C884 /* PostCell.m */; };
+		F9EA3A8722D542DA00C8C884 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EA3A8622D542DA00C8C884 /* Post.m */; };
+		F9EA3A8A22D5598E00C8C884 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EA3A8922D5598E00C8C884 /* DetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +73,14 @@
 		F9EA3A7922D40C6F00C8C884 /* SignupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
 		F9EA3A7B22D40CDA00C8C884 /* TimelineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
 		F9EA3A7C22D40CDA00C8C884 /* TimelineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
+		F9EA3A7E22D5245D00C8C884 /* CameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		F9EA3A7F22D5245D00C8C884 /* CameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		F9EA3A8122D528E200C8C884 /* PostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
+		F9EA3A8222D528E200C8C884 /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
+		F9EA3A8522D542DA00C8C884 /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
+		F9EA3A8622D542DA00C8C884 /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
+		F9EA3A8822D5598E00C8C884 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		F9EA3A8922D5598E00C8C884 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +159,7 @@
 		F9EA3A4022D3FB6700C8C884 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				F9EA3A8422D542B200C8C884 /* Models */,
 				F9EA3A7422D40BF000C8C884 /* ViewControllers */,
 				F9EA3A7322D40BD200C8C884 /* Views */,
 				F9EA3A4122D3FB6700C8C884 /* AppDelegate.h */,
@@ -181,6 +194,8 @@
 		F9EA3A7322D40BD200C8C884 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F9EA3A8122D528E200C8C884 /* PostCell.h */,
+				F9EA3A8222D528E200C8C884 /* PostCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,8 +209,21 @@
 				F9EA3A7922D40C6F00C8C884 /* SignupViewController.m */,
 				F9EA3A7B22D40CDA00C8C884 /* TimelineViewController.h */,
 				F9EA3A7C22D40CDA00C8C884 /* TimelineViewController.m */,
+				F9EA3A7E22D5245D00C8C884 /* CameraViewController.h */,
+				F9EA3A7F22D5245D00C8C884 /* CameraViewController.m */,
+				F9EA3A8822D5598E00C8C884 /* DetailsViewController.h */,
+				F9EA3A8922D5598E00C8C884 /* DetailsViewController.m */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F9EA3A8422D542B200C8C884 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F9EA3A8522D542DA00C8C884 /* Post.h */,
+				F9EA3A8622D542DA00C8C884 /* Post.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,8 +449,12 @@
 				F9EA3A5122D3FB6800C8C884 /* main.m in Sources */,
 				F9EA3A4322D3FB6800C8C884 /* AppDelegate.m in Sources */,
 				F9EA3A7A22D40C6F00C8C884 /* SignupViewController.m in Sources */,
+				F9EA3A8022D5245D00C8C884 /* CameraViewController.m in Sources */,
+				F9EA3A8322D528E200C8C884 /* PostCell.m in Sources */,
 				F9EA3A7722D40C0D00C8C884 /* LoginViewController.m in Sources */,
+				F9EA3A8A22D5598E00C8C884 /* DetailsViewController.m in Sources */,
 				F9EA3A7D22D40CDA00C8C884 /* TimelineViewController.m in Sources */,
+				F9EA3A8722D542DA00C8C884 /* Post.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
