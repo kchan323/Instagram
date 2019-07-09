@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  SignupViewController.h
 //  Instagram
 //
 //  Created by kchan23 on 7/8/19.
@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
 
+@interface SignupViewController : UIViewController
 
 @end
 
+NS_ASSUME_NONNULL_END
