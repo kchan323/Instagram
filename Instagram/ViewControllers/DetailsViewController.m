@@ -29,8 +29,40 @@
         self.posterView.image = [UIImage imageWithData:data];
     }];
     self.captionLabel.text = self.post.caption;
-    //NSDate = self.post createdAt
-    self.timestampLabel.text = nil;
+    
+    //self.timestampLabel.text = self.post.createdAtString;
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+    [formatter setDateFormat:@"E MMM d HH:mm:ss Z y"];
+    NSDate *createdAt = [self.post createdAt];
+    NSDate *todayDate = [NSDate date];
+    double ti = [createdAt timeIntervalSinceDate:todayDate];
+    ti = ti * -1;
+    if(ti < 1) {
+        //return @"never";
+        self.timestampLabel.text = @"never";
+    } else  if (ti < 60) {
+        //return @"less than a min ago";
+        //return [NSString stringWithFormat:@"%d less than a min ago"];
+        self.timestampLabel.text = @"less than a min ago";
+    } else if (ti < 3600) {
+        int diff = round(ti / 60);
+        //return [NSString stringWithFormat:@"%d min ago", diff];
+        self.timestampLabel.text = [NSString stringWithFormat:@"%d min ago", diff];
+    } else if (ti < 86400) {
+        int diff = round(ti / 60 / 60);
+        //return[NSString stringWithFormat:@"%d hr ago", diff];
+        self.timestampLabel.text = [NSString stringWithFormat:@"%d hr ago", diff];
+    } else if (ti < INFINITY) {
+        formatter.dateStyle = NSDateFormatterShortStyle;
+        formatter.timeStyle = NSDateFormatterNoStyle;
+        self.timestampLabel.text = [formatter stringFromDate:createdAt];
+    }
+    else {
+        //return @"never";
+        self.timestampLabel.text = @"never";
+    }
 }
 
 /*
