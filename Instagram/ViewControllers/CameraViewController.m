@@ -30,7 +30,7 @@
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     
-    //self.originalImage = originalImage;
+    self.originalImage = originalImage;
     self.editedImage = [self resizeImage:editedImage withSize:CGSizeMake(400, 400)];
     self.posterView.image = self.editedImage;
     

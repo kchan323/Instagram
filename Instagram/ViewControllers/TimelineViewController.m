@@ -102,6 +102,18 @@
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     Post *post = self.postsArray[indexPath.row];
     cell.post = post;
+    self.user = [PFUser currentUser];
+    PFFileObject *image = [self.user objectForKey:@"image"];
+    
+    cell.userLabel1.text = [self.user objectForKey:@"username"];
+    cell.userLabel2.text = [self.user objectForKey:@"username"];
+
+    [image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!data) {
+            return NSLog(@"%@", error);
+        }
+        cell.profileView.image = [UIImage imageWithData:data];
+    }];
     
     [post.image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!data) {
