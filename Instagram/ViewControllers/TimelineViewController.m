@@ -13,12 +13,14 @@
 #import "PostCell.h"
 #import "Post.h"
 #import "DetailsViewController.h"
+#import "DateTools.h"
 
-@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *postsArray;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (assign, nonatomic) BOOL isMoreDataLoading;
 
 @end
 
@@ -59,15 +61,17 @@
 
 - (IBAction)didTapLogout:(id)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        // PFUser.current() will now be nil
+        if(PFUser.currentUser == nil) {
+            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+            appDelegate.window.rootViewController = loginViewController;
+            
+            NSLog(@"User logged out successfully");
+        } else {
+            NSLog(@"Error logging out: %@", error);
+        }
     }];
-    
-    AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
-
-    UIViewController* rootController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"LoginViewController"];
-
-    UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:rootController];
-    appDelegateTemp.window.rootViewController = navigation;
 }
 
 #pragma mark - Navigation
@@ -95,6 +99,33 @@
     }];
     
     cell.captionLabel.text = post.caption;
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+    [formatter setDateFormat:@"E MMM d HH:mm:ss Z y"];
+    NSDate *createdAt = [post createdAt];
+    NSDate *todayDate = [NSDate date];
+    double ti = [createdAt timeIntervalSinceDate:todayDate];
+    ti = ti * -1;
+    if(ti < 1) {
+        cell.dateLabel.text = @"never";
+    } else  if (ti < 60) {
+        cell.dateLabel.text = @"less than a min ago";
+    } else if (ti < 3600) {
+        int diff = round(ti / 60);
+        cell.dateLabel.text = [NSString stringWithFormat:@"%d min ago", diff];
+    } else if (ti < 86400) {
+        int diff = round(ti / 60 / 60);
+        cell.dateLabel.text = [NSString stringWithFormat:@"%d hr ago", diff];
+    } else if (ti < INFINITY) {
+        formatter.dateStyle = NSDateFormatterShortStyle;
+        formatter.timeStyle = NSDateFormatterNoStyle;
+        cell.dateLabel.text = [formatter stringFromDate:createdAt];
+    }
+    else {
+        cell.dateLabel.text = @"never";
+    }
+    
     return cell;
 }
 
