@@ -8,6 +8,7 @@
 
 #import "DetailsViewController.h"
 #import "Post.h"
+#import "DateTools.h"
 
 @interface DetailsViewController ()
 
@@ -29,9 +30,7 @@
         self.posterView.image = [UIImage imageWithData:data];
     }];
     self.captionLabel.text = self.post.caption;
-    
-    //self.timestampLabel.text = self.post.createdAtString;
-    
+        
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setFormatterBehavior:NSDateFormatterBehavior10_4];
     [formatter setDateFormat:@"E MMM d HH:mm:ss Z y"];
