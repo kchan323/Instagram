@@ -38,10 +38,7 @@
     NSDate *todayDate = [NSDate date];
     double ti = [createdAt timeIntervalSinceDate:todayDate];
     ti = ti * -1;
-    if(ti < 1) {
-        //return @"never";
-        self.timestampLabel.text = @"never";
-    } else  if (ti < 60) {
+    if (ti < 60) {
         //return @"less than a min ago";
         //return [NSString stringWithFormat:@"%d less than a min ago"];
         self.timestampLabel.text = @"less than a min ago";
@@ -53,14 +50,10 @@
         int diff = round(ti / 60 / 60);
         //return[NSString stringWithFormat:@"%d hr ago", diff];
         self.timestampLabel.text = [NSString stringWithFormat:@"%d hr ago", diff];
-    } else if (ti < INFINITY) {
+    } else {
         formatter.dateStyle = NSDateFormatterShortStyle;
         formatter.timeStyle = NSDateFormatterNoStyle;
         self.timestampLabel.text = [formatter stringFromDate:createdAt];
-    }
-    else {
-        //return @"never";
-        self.timestampLabel.text = @"never";
     }
 }
 

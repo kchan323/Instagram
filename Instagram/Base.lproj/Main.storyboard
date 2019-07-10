@@ -269,7 +269,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0jl-Xe-o1K">
-                                <rect key="frame" x="172" y="596" width="31" height="30"/>
+                                <rect key="frame" x="172" y="266" width="31" height="330"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Post"/>
                                 <connections>
@@ -291,7 +291,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B7Y-x7-f0b" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Ch4-1f-wti" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1358" y="2232"/>
+            <point key="canvasLocation" x="1357.5999999999999" y="2231.5270935960593"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="0or-bY-RcR">

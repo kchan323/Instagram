@@ -18,7 +18,7 @@
 @interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *postsArray;
+@property (strong, nonatomic) NSMutableArray *postsArray;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (assign, nonatomic) BOOL isMoreDataLoading;
 
@@ -31,7 +31,8 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self fetchPosts];
+    self.postsArray = [[NSMutableArray alloc] init];
+    [self fetchPostsWithFilter:nil];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
@@ -39,18 +40,29 @@
 }
 
 - (void)fetchPosts {
-    // construct PFQuery
+    [self fetchPostsWithFilter:nil];
+}
+
+- (void)fetchPostsWithFilter: (NSDate *)lastDate{
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
+    if(lastDate) {
+        [postQuery whereKey:@"createdAt" lessThan:lastDate];
+    }
     postQuery.limit = 20;
-    
-    // fetch data asynchronously
+
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
-            NSLog(@"😎😎😎 Successfully loaded home timeline");
-            self.postsArray = posts;
+            if(lastDate){
+                self.isMoreDataLoading = NO;
+                [self.postsArray addObjectsFromArray:posts];
+            }
+            else {
+                self.postsArray = posts;
+            }
             [self.tableView reloadData];
+            NSLog(@"😎😎😎 Successfully loaded home timeline");
         }
         else {
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
@@ -107,9 +119,7 @@
     NSDate *todayDate = [NSDate date];
     double ti = [createdAt timeIntervalSinceDate:todayDate];
     ti = ti * -1;
-    if(ti < 1) {
-        cell.dateLabel.text = @"never";
-    } else  if (ti < 60) {
+    if (ti < 60) {
         cell.dateLabel.text = @"less than a min ago";
     } else if (ti < 3600) {
         int diff = round(ti / 60);
@@ -117,20 +127,29 @@
     } else if (ti < 86400) {
         int diff = round(ti / 60 / 60);
         cell.dateLabel.text = [NSString stringWithFormat:@"%d hr ago", diff];
-    } else if (ti < INFINITY) {
+    } else {
         formatter.dateStyle = NSDateFormatterShortStyle;
         formatter.timeStyle = NSDateFormatterNoStyle;
         cell.dateLabel.text = [formatter stringFromDate:createdAt];
     }
-    else {
-        cell.dateLabel.text = @"never";
-    }
-    
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.postsArray.count;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(!self.isMoreDataLoading){
+        int scrollViewContentHeight = self.tableView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
+            self.isMoreDataLoading = true;
+            Post *lastPost = [self.postsArray lastObject];
+            NSDate *lastDate = lastPost.createdAt;
+            [self fetchPostsWithFilter:lastDate];
+        }
+    }
 }
 
 @end
