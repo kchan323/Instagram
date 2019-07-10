@@ -269,7 +269,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N4o-dH-EiV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="445.60000000000002" y="2938.6699507389162"/>
+            <point key="canvasLocation" x="446" y="2972"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="nYW-jW-oyb">
@@ -489,6 +489,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="postView" destination="sks-J8-6Kh" id="Y7b-BY-HqZ"/>
+                                            <segue destination="m2t-OW-o9b" kind="show" id="GJv-Z3-f9J"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -535,4 +536,7 @@
     <resources>
         <image name="favor-icon" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="GJv-Z3-f9J"/>
+    </inferredMetricsTieBreakers>
 </document>
