@@ -38,6 +38,8 @@ The following **additional** features are implemented:
 - [x] Posts are displayed using a CollectionView
 - [x] User can view post details by tapping on a cell
 - [x] User sees an alert if either username or password field is empty when trying to log in
+- [x] Using AutoLayout, Instagram should adjust it's layout for iPhone 7, Plus and SE device sizes as well as accommodate device rotation.
+- [x] User can edit profile image and bio.
 - [ ] List anything else that you can get done to improve the app functionality!
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
