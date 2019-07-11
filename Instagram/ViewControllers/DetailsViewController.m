@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *posterView;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 
 @end
 
@@ -30,6 +31,9 @@
         self.posterView.image = [UIImage imageWithData:data];
     }];
     self.captionLabel.text = self.post.caption;
+    
+    [self.favoriteButton setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
+    [self.favoriteButton setImage:[UIImage imageNamed:@"likered"] forState:UIControlStateSelected];
         
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setFormatterBehavior:NSDateFormatterBehavior10_4];

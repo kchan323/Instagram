@@ -135,8 +135,8 @@
         cell.posterView.image = [UIImage imageWithData:data];
     }];
     
-    [cell.favoriteButton setImage:[UIImage imageNamed:@"favor-icon"] forState:UIControlStateNormal];
-    [cell.favoriteButton setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateSelected];
+    [cell.favoriteButton setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
+    [cell.favoriteButton setImage:[UIImage imageNamed:@"likered"] forState:UIControlStateSelected];
     
     cell.captionLabel.text = post.caption;
     

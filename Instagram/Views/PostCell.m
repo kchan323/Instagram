@@ -18,23 +18,25 @@
     [self.profileView setUserInteractionEnabled:YES];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 - (IBAction)didTapLike:(id)sender {
     if(self.favorited == NO){
         NSLog(@"Successfully favorited");
         self.favorited = YES;
+        //self.favoriteCount += 1;
         [self.favoriteButton setSelected:YES];
+        //self.favoriteLabel.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
     }
     else {
         NSLog(@"Successfully unfavorited");
         self.favorited = NO;
+        //self.favoriteCount -= 1;
         [self.favoriteButton setSelected:NO];
+        //self.favoriteLabel.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
     }
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
 }
 
 - (void) didTapUserProfile:(UITapGestureRecognizer *)sender{

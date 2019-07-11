@@ -196,6 +196,9 @@
                                                         <constraint firstAttribute="height" constant="30" id="9UL-D3-eup"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="like"/>
+                                                    <connections>
+                                                        <action selector="didTapLike:" destination="LzU-Ul-8vV" eventType="touchUpInside" id="Aex-ry-y0a"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="koX-4L-pZ2">
                                                     <rect key="frame" x="41" y="408" width="54" height="54"/>
@@ -287,6 +290,7 @@
                                         <connections>
                                             <outlet property="captionLabel" destination="blj-EB-Zdq" id="phN-My-eBF"/>
                                             <outlet property="dateLabel" destination="hjO-7e-fwY" id="aCP-7U-jQd"/>
+                                            <outlet property="favoriteButton" destination="17l-Gi-2Cq" id="zaI-WA-fOP"/>
                                             <outlet property="posterView" destination="ggU-Vi-5Vi" id="41U-gH-lKy"/>
                                             <outlet property="profileView" destination="iO5-VJ-7jH" id="Pk0-5w-ugb"/>
                                             <outlet property="userLabel1" destination="aSO-s6-vZD" id="sAO-mQ-Fhy"/>
@@ -431,6 +435,7 @@
                     </view>
                     <connections>
                         <outlet property="captionLabel" destination="VCs-n8-e91" id="Ptg-6y-a9q"/>
+                        <outlet property="favoriteButton" destination="AdR-h1-7oM" id="i8I-Pw-kC7"/>
                         <outlet property="posterView" destination="6eg-gk-IJd" id="xUd-7D-wGh"/>
                         <outlet property="timestampLabel" destination="Hq5-nL-IhA" id="HDa-si-WQv"/>
                     </connections>
