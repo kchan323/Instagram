@@ -34,7 +34,7 @@
     
     self.user = [PFUser currentUser];
     PFFileObject *image = [self.user objectForKey:@"image"];
-    
+        
     [image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!data) {
             return NSLog(@"%@", error);

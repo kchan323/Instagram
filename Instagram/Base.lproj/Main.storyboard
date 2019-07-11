@@ -169,6 +169,10 @@
                                                     <rect key="frame" x="15" y="272" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="favor-icon"/>
+                                                    <connections>
+                                                        <action selector="didTapLike:" destination="LzU-Ul-8vV" eventType="touchUpInside" id="jNn-WG-JHg"/>
+                                                        <action selector="didTapLike:" destination="yqe-mi-2i8" eventType="touchUpInside" id="nK0-gY-zBT"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJc-Gu-NGa">
                                                     <rect key="frame" x="45" y="277" width="43" height="21"/>
@@ -203,6 +207,7 @@
                                         <connections>
                                             <outlet property="captionLabel" destination="blj-EB-Zdq" id="phN-My-eBF"/>
                                             <outlet property="dateLabel" destination="hjO-7e-fwY" id="aCP-7U-jQd"/>
+                                            <outlet property="favoriteButton" destination="NKW-xW-fnX" id="aTG-d2-QfE"/>
                                             <outlet property="posterView" destination="ggU-Vi-5Vi" id="41U-gH-lKy"/>
                                             <outlet property="profileView" destination="iO5-VJ-7jH" id="Pk0-5w-ugb"/>
                                             <outlet property="userLabel1" destination="aSO-s6-vZD" id="sAO-mQ-Fhy"/>
@@ -437,8 +442,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Katelin Chan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9M-p3-ROq">
-                                <rect key="frame" x="16" y="215" width="104" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9M-p3-ROq">
+                                <rect key="frame" x="16" y="215" width="48" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -537,6 +542,6 @@
         <image name="favor-icon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GJv-Z3-f9J"/>
+        <segue reference="p18-r6-umG"/>
     </inferredMetricsTieBreakers>
 </document>

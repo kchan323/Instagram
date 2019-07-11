@@ -14,6 +14,7 @@
 #import "Post.h"
 #import "DetailsViewController.h"
 #import "DateTools.h"
+#import "MBProgressHUD/MBProgressHUD.h"
 
 @interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
@@ -52,6 +53,7 @@
     }
     postQuery.limit = 20;
 
+    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
             if(lastDate){
@@ -68,6 +70,7 @@
             NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
         }
         [self.refreshControl endRefreshing];
+        [MBProgressHUD hideHUDForView:self.navigationController.view animated:YES];
     }];
 }
 
@@ -103,10 +106,11 @@
     Post *post = self.postsArray[indexPath.row];
     cell.post = post;
     self.user = [PFUser currentUser];
-    PFFileObject *image = [self.user objectForKey:@"image"];
     
-    cell.userLabel1.text = [self.user objectForKey:@"username"];
-    cell.userLabel2.text = [self.user objectForKey:@"username"];
+    PFFileObject *image = [post.author objectForKey:@"image"];
+    
+    cell.userLabel1.text = post.author.username;
+    cell.userLabel2.text = post.author.username;
 
     [image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!data) {
@@ -114,6 +118,10 @@
         }
         cell.profileView.image = [UIImage imageWithData:data];
     }];
+    cell.profileView.layer.cornerRadius = cell.profileView.frame.size.height/2;
+    //cell.profileView.layer.masksToBounds = YES;
+    //cell.profileView.layer.borderWidth = 0;
+
     
     [post.image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!data) {
@@ -121,6 +129,9 @@
         }
         cell.posterView.image = [UIImage imageWithData:data];
     }];
+    
+    [cell.favoriteButton setImage:[UIImage imageNamed:@"favor-icon"] forState:UIControlStateNormal];
+    [cell.favoriteButton setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateSelected];
     
     cell.captionLabel.text = post.caption;
     

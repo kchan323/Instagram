@@ -54,6 +54,8 @@
 }
 
 - (IBAction)didTapPost:(id)sender {
+    self.posterView.image = nil;
+    self.captionField.text = nil;
     [Post postUserImage:self.editedImage withCaption:self.captionField.text withCompletion:nil];
     [self.tabBarController setSelectedIndex:0];
 }

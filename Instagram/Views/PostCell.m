@@ -21,4 +21,17 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)didTapLike:(id)sender {
+    if(self.favorited == NO){
+        NSLog(@"Successfully favorited");
+        self.favorited = YES;
+        [self.favoriteButton setSelected:YES];
+    }
+    else {
+        NSLog(@"Successfully unfavorited");
+        self.favorited = NO;
+        [self.favoriteButton setSelected:NO];
+    }
+}
+
 @end

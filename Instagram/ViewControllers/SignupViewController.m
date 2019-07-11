@@ -51,6 +51,7 @@
             // manually segue to logged in view
         }
     }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*
