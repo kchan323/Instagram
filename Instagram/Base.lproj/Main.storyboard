@@ -291,7 +291,7 @@
                                             <outlet property="profileView" destination="iO5-VJ-7jH" id="Pk0-5w-ugb"/>
                                             <outlet property="userLabel1" destination="aSO-s6-vZD" id="sAO-mQ-Fhy"/>
                                             <outlet property="userLabel2" destination="Knf-a1-oGB" id="dSN-qm-7BI"/>
-                                            <segue destination="m2t-OW-o9b" kind="show" identifier="detailSegue" id="p18-r6-umG"/>
+                                            <segue destination="m2t-OW-o9b" kind="show" identifier="postSegue" id="Olj-cU-hPN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -316,6 +316,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="MMB-IQ-dFg" id="ais-QF-HE1"/>
+                        <segue destination="4RN-af-ycc" kind="show" identifier="profileSegue" id="1s8-lR-FK8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dp1-Vd-aYc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -838,6 +839,7 @@
         <image name="send" width="980" height="980"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GJv-Z3-f9J"/>
+        <segue reference="1s8-lR-FK8"/>
+        <segue reference="Olj-cU-hPN"/>
     </inferredMetricsTieBreakers>
 </document>

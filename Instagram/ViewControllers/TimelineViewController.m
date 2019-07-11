@@ -15,8 +15,9 @@
 #import "DetailsViewController.h"
 #import "DateTools.h"
 #import "MBProgressHUD/MBProgressHUD.h"
+#import "ProfileViewController.h"
 
-@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, PostCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *postsArray;
@@ -96,10 +97,14 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([segue.identifier isEqualToString:@"detailSegue"]) {
+    if([segue.identifier isEqualToString:@"postSegue"]) {
         PostCell *tappedCell = sender;
         DetailsViewController *detailsViewController =  [segue destinationViewController];
         detailsViewController.post = tappedCell.post;
+    }
+    else if([segue.identifier isEqualToString:@"profileSegue"]) {
+        ProfileViewController *profileViewController =  [segue destinationViewController];
+        profileViewController.user = sender;
     }
     
 }
@@ -155,6 +160,8 @@
         formatter.timeStyle = NSDateFormatterNoStyle;
         cell.dateLabel.text = [formatter stringFromDate:createdAt];
     }
+    
+    cell.delegate = self;
     return cell;
 }
 
@@ -173,6 +180,10 @@
             [self fetchPostsWithFilter:lastDate];
         }
     }
+}
+
+- (void)postCell:(PostCell *)postCell didTap:(PFUser *)user{
+    [self performSegueWithIdentifier:@"profileSegue" sender:user];
 }
 
 @end

@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "Post.h"
+#import "PostCell.h"
+#import "Parse/Parse.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol PostCellDelegate;
+
 @interface PostCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *profileView;
 @property (weak, nonatomic) IBOutlet UILabel *userLabel1;
 @property (weak, nonatomic) IBOutlet UIImageView *posterView;
@@ -21,6 +26,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) Post *post;
 @property (nonatomic) BOOL favorited;
+@property (nonatomic, weak) id<PostCellDelegate> delegate;
+
+@end
+
+@protocol PostCellDelegate
+
+- (void)postCell:(PostCell *)postCell didTap: (PFUser *)user;
 
 @end
 
