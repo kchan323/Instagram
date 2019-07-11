@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSMutableArray *postsArray;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (assign, nonatomic) BOOL isMoreDataLoading;
+@property (strong, nonatomic) NSArray *likeArray;
 
 @end
 

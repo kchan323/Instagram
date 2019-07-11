@@ -21,8 +21,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *followingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bioLabel;
-//@property (strong, nonatomic) UIImage *originalImage;
-//@property (strong, nonatomic) UIImage *editedImage;
 @property (strong, nonatomic) NSArray *postsArray;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -32,12 +30,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.user = [PFUser currentUser];
+    
+    if(self.user == nil){
+        self.user = [PFUser currentUser];
+    }
+    
+    NSLog(@"%@", self.user.username);
     
     UILabel *navtitleLabel = [UILabel new];
     NSShadow *shadow = [NSShadow new];
     NSString *navTitle = self.user.username;
-    //NSAttributedString *titleText = [[NSAttributedString alloc] initWithString:navTitle];
     NSAttributedString *titleText = [[NSAttributedString alloc] initWithString:navTitle
                                                                     attributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:18],
                                                                                  NSForegroundColorAttributeName : [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8],
@@ -115,13 +117,8 @@
     PostCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PostCollectionCell" forIndexPath:indexPath];
     
     Post *post = self.postsArray[indexPath.item];
-    //cell.post = post;
+
     self.user = [PFUser currentUser];
-    //PFFileObject *image = [self.user objectForKey:@"image"];
-    
-//    cell.userLabel1.text = [self.user objectForKey:@"username"];
-//    cell.userLabel2.text = [self.user objectForKey:@"username"];
-//
     
     [post.image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!data) {
