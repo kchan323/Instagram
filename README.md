@@ -35,12 +35,10 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
+- [x] Posts are displayed using a CollectionView
+- [x] User can view post details by tapping on a cell 
+- [ ] Images fade in as they are loading
 - [ ] List anything else that you can get done to improve the app functionality!
-
- Movies are displayed using a CollectionView instead of a TableView.
- User can search for a movie.
- All images fade in as they are loading.
- User can view the large movie poster by tapping on a cell
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
