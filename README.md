@@ -2,7 +2,7 @@
 
 **Instagram** is a photo sharing app using Parse as its backend.
 
-Time spent: **4+4+4** hours spent in total
+Time spent: **4+4+4+2** hours spent in total
 
 ## User Stories
 
@@ -19,7 +19,7 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 - [x] Run your app on your phone and use the camera to take the photo
-- [ ] Style the login page to look like the real Instagram login page.
+- [x] Style the login page to look like the real Instagram login page.
 - [x] Style the feed to look like the real Instagram feed.
 - [x] User can use a tab bar to switch between all "Instagram" posts and posts published only by the user. AKA, tabs for Home Feed and Profile
 - [x] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
@@ -36,13 +36,14 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 - [x] Posts are displayed using a CollectionView
-- [x] User can view post details by tapping on a cell 
+- [x] User can view post details by tapping on a cell
+- [x] User sees an alert if either username or password field is empty when trying to log in
 - [ ] List anything else that you can get done to improve the app functionality!
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. Protocols and delegates
+2. Models
 
 ## Video Walkthrough
 
