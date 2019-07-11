@@ -37,9 +37,25 @@
         NSLog(@"%@", user);
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
+            if([self.usernameField.text isEqual:@""] || [self.passwordField.text isEqual:@""]) {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Log In"
+                                                                               message:@"Please enter username and password."
+                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
+                // create a try again action
+                UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again"
+                                                                         style:UIAlertActionStyleCancel
+                                                                       handler:^(UIAlertAction * _Nonnull action) {
+                                                                           // handle try again response here. Doing nothing will dismiss the view.
+                                                                       }];
+                // add the try again action to the alertController
+                [alert addAction:tryAgainAction];
+                
+                [self presentViewController:alert animated:YES completion:^{
+                    // optional code for what happens after the alert controller has finished presenting
+                }];
+            }
         } else {
             NSLog(@"User logged in successfully");
-            
             [self performSegueWithIdentifier:@"loginSegue" sender:nil];
         }
     }];

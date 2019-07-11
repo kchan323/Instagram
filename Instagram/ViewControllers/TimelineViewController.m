@@ -30,6 +30,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIImage *image = [UIImage imageNamed:@"insta3.png"];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:image];
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.postsArray = [[NSMutableArray alloc] init];
