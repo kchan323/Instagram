@@ -41,6 +41,7 @@
         }
         self.profileView.image = [UIImage imageWithData:data];
     }];
+    self.profileView.layer.cornerRadius = self.profileView.frame.size.height/2;
     
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;

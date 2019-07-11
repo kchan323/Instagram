@@ -122,9 +122,6 @@
         cell.profileView.image = [UIImage imageWithData:data];
     }];
     cell.profileView.layer.cornerRadius = cell.profileView.frame.size.height/2;
-    //cell.profileView.layer.masksToBounds = YES;
-    //cell.profileView.layer.borderWidth = 0;
-
     
     [post.image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!data) {
