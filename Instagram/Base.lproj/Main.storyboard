@@ -170,7 +170,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="540.66666666666663"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iO5-VJ-7jH">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iO5-VJ-7jH">
                                                     <rect key="frame" x="10" y="10" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="B8V-ym-3nM"/>
@@ -580,7 +580,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Emj-eg-cBi">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Emj-eg-cBi">
                                 <rect key="frame" x="15" y="103" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="LhZ-ke-3ot"/>
@@ -643,7 +643,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="didTapEdit:" destination="4RN-af-ycc" eventType="touchUpInside" id="lJu-lB-9Co"/>
+                                    <segue destination="mcS-C9-EJC" kind="presentation" identifier="editProfileSegue" id="TEl-o1-tef"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ciI-xw-Nwk">
@@ -663,7 +663,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="115" height="118"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sks-J8-6Kh">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sks-J8-6Kh">
                                                     <rect key="frame" x="0.0" y="0.0" width="115" height="118"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -671,7 +671,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="postView" destination="sks-J8-6Kh" id="Y7b-BY-HqZ"/>
-                                            <segue destination="m2t-OW-o9b" kind="show" id="GJv-Z3-f9J"/>
+                                            <segue destination="m2t-OW-o9b" kind="show" identifier="detailSegue" id="GJv-Z3-f9J"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -726,6 +726,86 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U4F-gJ-4ah" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2256.8000000000002" y="2231.5270935960593"/>
+        </scene>
+        <!--Edit Profile View Controller-->
+        <scene sceneID="cPm-CF-Ge4">
+            <objects>
+                <viewController id="mcS-C9-EJC" customClass="EditProfileViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gGQ-r0-hot">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0b-V6-1Wd">
+                                <rect key="frame" x="10" y="54" width="48" height="30"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapCancel:" destination="mcS-C9-EJC" eventType="touchUpInside" id="zgN-bq-2S4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVR-D6-g51">
+                                <rect key="frame" x="110" y="204" width="155" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Change Profile Photo"/>
+                                <connections>
+                                    <action selector="didTapEdit:" destination="mcS-C9-EJC" eventType="touchUpInside" id="vhf-eF-mQA"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tCq-qy-nR5">
+                                <rect key="frame" x="137.66666666666666" y="94" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="2WK-IQ-ZiW"/>
+                                    <constraint firstAttribute="width" constant="100" id="u8L-i7-2Bw"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFF-FR-HQd">
+                                <rect key="frame" x="327" y="54" width="38" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="didTapDone:" destination="mcS-C9-EJC" eventType="touchUpInside" id="Wdz-OX-AU1"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bio" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dvk-dz-fZY">
+                                <rect key="frame" x="50" y="244" width="310" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gjz-bQ-75n">
+                                <rect key="frame" x="15" y="249.00000000000003" width="25" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YAc-Kr-Jsm" firstAttribute="trailing" secondItem="BFF-FR-HQd" secondAttribute="trailing" constant="10" id="3Vc-li-fTf"/>
+                            <constraint firstItem="YAc-Kr-Jsm" firstAttribute="trailing" secondItem="dvk-dz-fZY" secondAttribute="trailing" constant="15" id="9Ym-p5-zkq"/>
+                            <constraint firstItem="dvk-dz-fZY" firstAttribute="top" secondItem="kVR-D6-g51" secondAttribute="bottom" constant="10" id="AO1-RC-suv"/>
+                            <constraint firstItem="tCq-qy-nR5" firstAttribute="top" secondItem="C0b-V6-1Wd" secondAttribute="bottom" constant="10" id="DG1-IK-hzK"/>
+                            <constraint firstItem="C0b-V6-1Wd" firstAttribute="leading" secondItem="YAc-Kr-Jsm" secondAttribute="leading" constant="10" id="E8X-Uj-Fi7"/>
+                            <constraint firstItem="tCq-qy-nR5" firstAttribute="centerX" secondItem="gGQ-r0-hot" secondAttribute="centerX" id="FQU-PD-f2H"/>
+                            <constraint firstItem="C0b-V6-1Wd" firstAttribute="top" secondItem="YAc-Kr-Jsm" secondAttribute="top" constant="10" id="Ja3-p0-50K"/>
+                            <constraint firstItem="kVR-D6-g51" firstAttribute="centerX" secondItem="tCq-qy-nR5" secondAttribute="centerX" id="UTf-ZS-yMf"/>
+                            <constraint firstItem="Gjz-bQ-75n" firstAttribute="leading" secondItem="YAc-Kr-Jsm" secondAttribute="leading" constant="15" id="cG1-wp-bc2"/>
+                            <constraint firstItem="kVR-D6-g51" firstAttribute="top" secondItem="tCq-qy-nR5" secondAttribute="bottom" constant="10" id="eqf-e9-GdP"/>
+                            <constraint firstItem="dvk-dz-fZY" firstAttribute="centerY" secondItem="Gjz-bQ-75n" secondAttribute="centerY" id="lw3-R6-nLn"/>
+                            <constraint firstItem="dvk-dz-fZY" firstAttribute="leading" secondItem="Gjz-bQ-75n" secondAttribute="trailing" constant="10" id="s4I-Ty-GPi"/>
+                            <constraint firstItem="BFF-FR-HQd" firstAttribute="top" secondItem="YAc-Kr-Jsm" secondAttribute="top" constant="10" id="u0l-wR-col"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YAc-Kr-Jsm"/>
+                    </view>
+                    <connections>
+                        <outlet property="bioField" destination="dvk-dz-fZY" id="s8h-K6-ujT"/>
+                        <outlet property="profileView" destination="tCq-qy-nR5" id="Q1n-ID-K8d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p7t-Tg-5We" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3061.5999999999999" y="2231.5270935960593"/>
         </scene>
         <!--Profile-->
         <scene sceneID="7Zh-ir-Adf">

@@ -11,8 +11,9 @@
 #import "PostCollectionCell.h"
 #import "Post.h"
 #import "DetailsViewController.h"
+#import "EditProfileViewController.h"
 
-@interface ProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
+@interface ProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileView;
 @property (weak, nonatomic) IBOutlet UILabel *postsLabel;
@@ -20,8 +21,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *followingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bioLabel;
-@property (strong, nonatomic) UIImage *originalImage;
-@property (strong, nonatomic) UIImage *editedImage;
+//@property (strong, nonatomic) UIImage *originalImage;
+//@property (strong, nonatomic) UIImage *editedImage;
 @property (strong, nonatomic) NSArray *postsArray;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
@@ -31,17 +32,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.user = [PFUser currentUser];
-    PFFileObject *image = [self.user objectForKey:@"image"];
-        
-    [image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        if (!data) {
-            return NSLog(@"%@", error);
-        }
-        self.profileView.image = [UIImage imageWithData:data];
-    }];
-    self.profileView.layer.cornerRadius = self.profileView.frame.size.height/2;
+    
+    UILabel *navtitleLabel = [UILabel new];
+    NSShadow *shadow = [NSShadow new];
+    NSString *navTitle = self.user.username;
+    //NSAttributedString *titleText = [[NSAttributedString alloc] initWithString:navTitle];
+    NSAttributedString *titleText = [[NSAttributedString alloc] initWithString:navTitle
+                                                                    attributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:18],
+                                                                                 NSForegroundColorAttributeName : [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8],
+                                                                                 NSShadowAttributeName : shadow}];
+    navtitleLabel.attributedText = titleText;
+    [navtitleLabel sizeToFit];
+    self.navigationItem.titleView = navtitleLabel;
+    self.authorLabel.text = self.user.username;
     
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
@@ -57,6 +61,18 @@
     CGFloat itemWidth = (self.collectionView.frame.size.width - layout.minimumInteritemSpacing * (postersPerLine - 1)) / postersPerLine;
     CGFloat itemHeight = itemWidth * 1;
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    PFFileObject *image = [self.user objectForKey:@"image"];
+    [image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!data) {
+            return NSLog(@"%@", error);
+        }
+        self.profileView.image = [UIImage imageWithData:data];
+    }];
+    self.profileView.layer.cornerRadius = self.profileView.frame.size.height/2;
+    self.bioLabel.text = [self.user objectForKey:@"bio"];
 }
 
 - (void)fetchPosts {
@@ -78,67 +94,21 @@
     }];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    
-    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-    
-    self.originalImage = originalImage;
-    self.editedImage = [self resizeImage:editedImage withSize:CGSizeMake(400, 400)];
-    self.profileView.image = self.editedImage;
-    NSData *imageData = UIImageJPEGRepresentation(editedImage, 1);
-    PFFileObject *imageFile = [PFFileObject fileObjectWithName:@"image.png" data: imageData];
-    [imageFile saveInBackground];
-    [self.user setObject:imageFile forKey:@"image"];
-    [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!error) {
-            
-        }
-    }];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (IBAction)didTapEdit:(id)sender {
-    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
-    imagePickerVC.delegate = self;
-    imagePickerVC.allowsEditing = YES;
-    
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    }
-    
-    [self presentViewController:imagePickerVC animated:YES completion:nil];
-}
-
-- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
-    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
-    
-    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
-    resizeImageView.image = image;
-    
-    UIGraphicsBeginImageContext(size);
-    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
-}
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UICollectionViewCell *tappedCell = sender;
-    NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
-    
-    Post *post = self.postsArray[indexPath.row];
-    DetailsViewController *detailsViewController =  [segue destinationViewController];
-    detailsViewController.post = post;
+    if([segue.identifier isEqualToString:@"detailSegue"]) {
+        UICollectionViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
+        Post *post = self.postsArray[indexPath.row];
+        DetailsViewController *detailsViewController =  [segue destinationViewController];
+        detailsViewController.post = post;
+    }
+    else if ([segue.identifier isEqualToString:@"editProfileSegue"]) {
+        EditProfileViewController *editProfileViewController =  [segue destinationViewController];
+        editProfileViewController.user = self.user;
+    }
 }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {

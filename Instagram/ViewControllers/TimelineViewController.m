@@ -58,7 +58,7 @@
 
     [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
-        if (posts) {
+        if ([posts count] != 0) {
             if(lastDate){
                 self.isMoreDataLoading = NO;
                 [self.postsArray addObjectsFromArray:posts];
