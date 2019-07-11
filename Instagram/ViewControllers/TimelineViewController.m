@@ -45,6 +45,10 @@
     [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [self fetchPosts];
+}
+
 - (void)fetchPosts {
     [self fetchPostsWithFilter:nil];
 }
@@ -102,6 +106,7 @@
         PostCell *tappedCell = sender;
         DetailsViewController *detailsViewController =  [segue destinationViewController];
         detailsViewController.post = tappedCell.post;
+        detailsViewController.user = self.user;
     }
     else if([segue.identifier isEqualToString:@"profileSegue"]) {
         ProfileViewController *profileViewController =  [segue destinationViewController];
@@ -136,8 +141,21 @@
         cell.posterView.image = [UIImage imageWithData:data];
     }];
     
-    [cell.favoriteButton setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
-    [cell.favoriteButton setImage:[UIImage imageNamed:@"likered"] forState:UIControlStateSelected];
+    NSArray *likeArray = [[NSArray alloc] init];
+    likeArray = [cell.post objectForKey:@"likeArray"];
+    NSString *username = [self.user objectForKey:@"username"];
+    if(![likeArray containsObject:username]) {
+        [cell.favoriteButton setSelected:NO];
+        [cell.favoriteButton setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
+        NSString *likeCount = [NSString stringWithFormat:@"%lu", (unsigned long)likeArray.count];
+        cell.likeCount.text = likeCount;
+    }
+    else {
+        [cell.favoriteButton setSelected:YES];
+        [cell.favoriteButton setImage:[UIImage imageNamed:@"likered"] forState:UIControlStateSelected];
+        NSString *likeCount = [NSString stringWithFormat:@"%lu", (unsigned long)likeArray.count];
+        cell.likeCount.text = likeCount;
+    }
     
     cell.captionLabel.text = post.caption;
     

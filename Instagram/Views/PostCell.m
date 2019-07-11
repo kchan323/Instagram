@@ -18,29 +18,66 @@
     [self.profileView setUserInteractionEnabled:YES];
 }
 
+- (void) didTapUserProfile:(UITapGestureRecognizer *)sender{
+    [self.delegate postCell:self didTap:self.post.author];
+}
+
+//- (IBAction)didTapLike:(id)sender {
+//    PFUser *user = [PFUser currentUser];
+//    NSArray *likeArray = [[NSArray alloc] init];
+//    likeArray = [self.post objectForKey:@"likeArray"];
+//    NSString *username = [user objectForKey:@"username"];
+//    if(![likeArray containsObject:username]) {
+//        NSLog(@"Successfully favorited");
+//        [self.favoriteButton setSelected:YES];
+//        [self.post addObject:username forKey:@"likeArray"];
+//        [self.post saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+//        }];
+//        likeArray = [self.post objectForKey:@"likeArray"];
+//        NSString *likeCount = [NSString stringWithFormat:@"%lu", (unsigned long)likeArray.count];
+//        self.likeCount.text = likeCount;
+//    }
+//    else {
+//        NSLog(@"Successfully unfavorited");
+//        [self.favoriteButton setSelected:NO];
+//        [self.post removeObject:username forKey:@"likeArray"];
+//        [self.post saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+//        }];
+//        likeArray = [self.post objectForKey:@"likeArray"];
+//        NSString *likeCount = [NSString stringWithFormat:@"%lu", (unsigned long)likeArray.count];
+//        self.likeCount.text = likeCount;
+//    }
+//}
+
 - (IBAction)didTapLike:(id)sender {
-    if(self.favorited == NO){
+    PFUser *user = [PFUser currentUser];
+    NSArray *likeArray = [[NSArray alloc] init];
+    likeArray = [self.post objectForKey:@"likeArray"];
+    NSString *username = [user objectForKey:@"username"];
+    if(![likeArray containsObject:username]) {
         NSLog(@"Successfully favorited");
-        self.favorited = YES;
-        //self.favoriteCount += 1;
         [self.favoriteButton setSelected:YES];
-        //self.favoriteLabel.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
+        [self.post addObject:username forKey:@"likeArray"];
+        [self.post saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        }];
+        likeArray = [self.post objectForKey:@"likeArray"];
+        NSString *likeCount = [NSString stringWithFormat:@"%lu", (unsigned long)likeArray.count];
+        self.likeCount.text = likeCount;
     }
     else {
         NSLog(@"Successfully unfavorited");
-        self.favorited = NO;
-        //self.favoriteCount -= 1;
         [self.favoriteButton setSelected:NO];
-        //self.favoriteLabel.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
+        [self.post removeObject:username forKey:@"likeArray"];
+        [self.post saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        }];
+        likeArray = [self.post objectForKey:@"likeArray"];
+        NSString *likeCount = [NSString stringWithFormat:@"%lu", (unsigned long)likeArray.count];
+        self.likeCount.text = likeCount;
     }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-}
-
-- (void) didTapUserProfile:(UITapGestureRecognizer *)sender{
-    [self.delegate postCell:self didTap:self.post.author];
 }
 
 @end

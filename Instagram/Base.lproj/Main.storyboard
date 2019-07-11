@@ -197,7 +197,7 @@
                                                     </constraints>
                                                     <state key="normal" title="Button" image="like"/>
                                                     <connections>
-                                                        <action selector="didTapLike:" destination="LzU-Ul-8vV" eventType="touchUpInside" id="Aex-ry-y0a"/>
+                                                        <action selector="didTapLike:" destination="LzU-Ul-8vV" eventType="touchUpInside" id="szH-XN-Rt3"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="koX-4L-pZ2">
@@ -242,16 +242,16 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjO-7e-fwY">
-                                                    <rect key="frame" x="20" y="510" width="335" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blj-EB-Zdq">
                                                     <rect key="frame" x="61.666666666666657" y="484" width="57" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hjO-7e-fwY">
+                                                    <rect key="frame" x="20" y="510" width="335" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -288,11 +288,16 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="bookmarkButton" destination="4px-UA-l1a" id="aSk-n9-X0o"/>
                                             <outlet property="captionLabel" destination="blj-EB-Zdq" id="phN-My-eBF"/>
+                                            <outlet property="commentButton" destination="koX-4L-pZ2" id="b6h-yj-TVP"/>
                                             <outlet property="dateLabel" destination="hjO-7e-fwY" id="aCP-7U-jQd"/>
                                             <outlet property="favoriteButton" destination="17l-Gi-2Cq" id="zaI-WA-fOP"/>
+                                            <outlet property="likeCount" destination="I8U-9e-tJU" id="AX7-Sd-73g"/>
+                                            <outlet property="likeLabel" destination="hJc-Gu-NGa" id="FHN-rR-K4W"/>
                                             <outlet property="posterView" destination="ggU-Vi-5Vi" id="41U-gH-lKy"/>
                                             <outlet property="profileView" destination="iO5-VJ-7jH" id="Pk0-5w-ugb"/>
+                                            <outlet property="sendButton" destination="udb-tR-6ew" id="gPA-xF-6bU"/>
                                             <outlet property="userLabel1" destination="aSO-s6-vZD" id="sAO-mQ-Fhy"/>
                                             <outlet property="userLabel2" destination="Knf-a1-oGB" id="dSN-qm-7BI"/>
                                             <segue destination="m2t-OW-o9b" kind="show" identifier="postSegue" id="Olj-cU-hPN"/>
@@ -349,6 +354,9 @@
                                     <constraint firstAttribute="height" constant="30" id="wn0-EC-SDh"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="like"/>
+                                <connections>
+                                    <action selector="didTapLike:" destination="m2t-OW-o9b" eventType="touchUpInside" id="bze-Zw-Htv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dA4-ia-kF5">
                                 <rect key="frame" x="41" y="436" width="54" height="54"/>
@@ -357,6 +365,14 @@
                                     <constraint firstAttribute="height" constant="54" id="l9f-sx-6nC"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="comment"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbx-X5-3Nr">
+                                <rect key="frame" x="96" y="448" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="dML-XR-WKL"/>
+                                    <constraint firstAttribute="height" constant="30" id="mTX-RM-7dl"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="send"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7DJ-WW-SAc">
                                 <rect key="frame" x="328" y="445.66666666666669" width="37" height="35"/>
@@ -378,6 +394,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaM-Ud-4cr">
+                                <rect key="frame" x="20" y="514" width="37" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCs-n8-e91">
                                 <rect key="frame" x="62" y="514" width="57" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -390,20 +412,6 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaM-Ud-4cr">
-                                <rect key="frame" x="20" y="514" width="37" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbx-X5-3Nr">
-                                <rect key="frame" x="96" y="448" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="dML-XR-WKL"/>
-                                    <constraint firstAttribute="height" constant="30" id="mTX-RM-7dl"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="send"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -434,10 +442,16 @@
                         <viewLayoutGuide key="safeArea" id="VJx-vd-pnZ"/>
                     </view>
                     <connections>
+                        <outlet property="bookmarkButton" destination="7DJ-WW-SAc" id="eNP-9N-1sP"/>
                         <outlet property="captionLabel" destination="VCs-n8-e91" id="Ptg-6y-a9q"/>
-                        <outlet property="favoriteButton" destination="AdR-h1-7oM" id="i8I-Pw-kC7"/>
+                        <outlet property="commentButton" destination="dA4-ia-kF5" id="Enm-M7-By6"/>
+                        <outlet property="favoriteButton" destination="AdR-h1-7oM" id="yYJ-Qt-IQq"/>
+                        <outlet property="likeCount" destination="dap-5g-byz" id="AWf-vl-XkT"/>
+                        <outlet property="likeLabel" destination="n7g-Bk-ndv" id="gDs-rf-QbN"/>
                         <outlet property="posterView" destination="6eg-gk-IJd" id="xUd-7D-wGh"/>
+                        <outlet property="sendButton" destination="Lbx-X5-3Nr" id="kFJ-wH-oyt"/>
                         <outlet property="timestampLabel" destination="Hq5-nL-IhA" id="HDa-si-WQv"/>
+                        <outlet property="userLabel" destination="DaM-Ud-4cr" id="HiV-Wv-gOI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N4o-dH-EiV" userLabel="First Responder" sceneMemberID="firstResponder"/>
