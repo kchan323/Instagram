@@ -72,6 +72,11 @@ User can tap a post to view details and can like a post and see number of likes 
 User can edit profile picture and bio
 <img src='http://g.recordit.co/h3iZDZPK2r.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
+User can tap on profile picture to view that user's profile page
+<img src='http://g.recordit.co/6Es9iXXFLA.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+User can tap on a CollectionViewCell to view details
+<img src='http://g.recordit.co/At4ohx0r7C.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 
 GIF created with [Recordit](http://recordit.co).
