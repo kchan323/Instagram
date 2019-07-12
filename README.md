@@ -51,8 +51,11 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
+Sign up and log in
+<img src='http://g.recordit.co/iqyeGAT0To.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 User can like a post and see number of likes for each post in the post details screen.
-<img src='http://g.recordit.co/flvIhJcbfE.gif' title='User can like and see number of likes' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/flvIhJcbfE.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [Recordit](http://recordit.co).
 
