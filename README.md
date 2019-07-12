@@ -58,10 +58,12 @@ Log out and alert if username/password is empty
 <img src='http://g.recordit.co/vjGFI4E45U.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 User can post a photo and caption and pull to refresh
-<img src='http://g.recordit.co/a8OHiBWG2U.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/BY2mid9Lho.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 User can view more than 20 posts with infinite scroll
 <img src='http://g.recordit.co/JX7PjCI7wp.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+
 
 User can use a tab bar for home and profile feeds and HUD while posts load
 <img src='http://g.recordit.co/f49D9AUMgR.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
