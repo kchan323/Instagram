@@ -69,6 +69,11 @@ User can use a tab bar for home and profile feeds and HUD while posts load
 User can tap a post to view details and can like a post and see number of likes for each post
 <img src='http://g.recordit.co/flvIhJcbfE.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
+User can edit profile picture and bio
+<img src='http://g.recordit.co/h3iZDZPK2r.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+
+
 GIF created with [Recordit](http://recordit.co).
 
 ## Credits
