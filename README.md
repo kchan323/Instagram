@@ -61,7 +61,7 @@ User can post a photo and caption and pull to refresh
 <img src='http://g.recordit.co/BY2mid9Lho.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 User can view more than 20 posts with infinite scroll
-<img src='http://g.recordit.co/JX7PjCI7wp.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/kXjY9u7VxA.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 
 
