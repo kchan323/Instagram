@@ -2,7 +2,7 @@
 
 **Instagram** is a photo sharing app using Parse as its backend.
 
-Time spent: **20** hours spent in total
+Time spent: **22** hours spent in total
 
 ## User Stories
 
@@ -86,7 +86,9 @@ GIF created with [Recordit](http://recordit.co).
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
-
+- [DateTools]
+- [Parse]
+- [MBProgressHUD]
 
 ## Notes
 
