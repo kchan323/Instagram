@@ -2,7 +2,7 @@
 
 **Instagram** is a photo sharing app using Parse as its backend.
 
-Time spent: **4+4+4+2+7** hours spent in total
+Time spent: **22** hours spent in total
 
 ## User Stories
 
@@ -30,7 +30,7 @@ The following **optional** features are implemented:
   - [x] Display the profile photo with each post
   - [x] Tapping on a post's username or profile photo goes to that user's profile page
 - [ ] User can comment on a post and see all comments for each post in the post details screen.
-- [ ] User can like a post and see number of likes for each post in the post details screen.
+- [x] User can like a post and see number of likes for each post in the post details screen.
 - [ ] Implement a custom camera view.
 
 The following **additional** features are implemented:
@@ -51,7 +51,33 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+Sign up and log in
+<img src='http://g.recordit.co/iqyeGAT0To.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+Log out and alert if username/password is empty
+<img src='http://g.recordit.co/vjGFI4E45U.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+User can post a photo and caption and pull to refresh
+<img src='http://g.recordit.co/BY2mid9Lho.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+User can view more than 20 posts with infinite scroll
+<img src='http://g.recordit.co/kXjY9u7VxA.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+User can use a tab bar for home and profile feeds and HUD while posts load
+<img src='http://g.recordit.co/VPh2pMowF9.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+User can tap a post to view details and can like a post and see number of likes for each post
+<img src='http://g.recordit.co/flvIhJcbfE.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+User can edit profile picture and bio
+<img src='http://g.recordit.co/h3iZDZPK2r.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+User can tap on profile picture to view that user's profile page
+<img src='http://g.recordit.co/6Es9iXXFLA.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+User can tap on a CollectionViewCell to view details
+<img src='http://g.recordit.co/At4ohx0r7C.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 
 GIF created with [Recordit](http://recordit.co).
 
@@ -60,7 +86,9 @@ GIF created with [Recordit](http://recordit.co).
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
-
+- DateTools
+- Parse
+- MBProgressHUD
 
 ## Notes
 
