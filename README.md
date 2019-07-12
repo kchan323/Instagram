@@ -63,12 +63,8 @@ User can post a photo and caption and pull to refresh
 User can view more than 20 posts with infinite scroll
 <img src='http://g.recordit.co/kXjY9u7VxA.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-
-
 User can use a tab bar for home and profile feeds and HUD while posts load
-<img src='http://g.recordit.co/f49D9AUMgR.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-
+<img src='http://g.recordit.co/VPh2pMowF9.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 User can tap a post to view details and can like a post and see number of likes for each post
 <img src='http://g.recordit.co/flvIhJcbfE.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
