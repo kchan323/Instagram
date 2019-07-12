@@ -77,23 +77,6 @@
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-//    NSArray *likeArray = [[NSArray alloc] init];
-//    likeArray = [self.post objectForKey:@"likeArray"];
-//    NSString *username = [self.user objectForKey:@"username"];
-//    if(![likeArray containsObject:username]) {
-//        [self.favoriteButton setSelected:NO];
-//        [self.favoriteButton setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
-//        NSString *likeCount = [NSString stringWithFormat:@"%lu", (unsigned long)likeArray.count];
-//        self.likeCount.text = likeCount;
-//    }
-//    else {
-//        [self.favoriteButton setSelected:YES];
-//        [self.favoriteButton setImage:[UIImage imageNamed:@"likered"] forState:UIControlStateSelected];
-//        NSString *likeCount = [NSString stringWithFormat:@"%lu", (unsigned long)likeArray.count];
-//        self.likeCount.text = likeCount;
-//    }
-}
 /*
 #pragma mark - Navigation
 

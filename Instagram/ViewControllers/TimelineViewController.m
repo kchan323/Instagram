@@ -46,7 +46,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [self fetchPosts];
+    //[self fetchPosts];
 }
 
 - (void)fetchPosts {

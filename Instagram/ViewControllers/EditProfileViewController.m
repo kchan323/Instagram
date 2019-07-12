@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //self.user = [PFUser currentUser];
+    self.user = [PFUser currentUser];
     PFFileObject *image = [self.user objectForKey:@"image"];
     [image getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!data) {
@@ -39,9 +39,11 @@
 
 - (IBAction)didTapDone:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
-    //[self.user objectForKey:@"bio"];
     NSString *bio = self.bioField.text;
     [self.user setObject:bio forKey:@"bio"];
+    [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        
+    }];
 }
 
 - (IBAction)didTapEdit:(id)sender {

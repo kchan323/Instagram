@@ -48,7 +48,8 @@
     [navtitleLabel sizeToFit];
     self.navigationItem.titleView = navtitleLabel;
     self.authorLabel.text = self.user.username;
-    
+    self.bioLabel.text = [self.user objectForKey:@"bio"];
+
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     
